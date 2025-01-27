@@ -18,6 +18,29 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
+# Containerization
+Since Docker Desktop is a paid service now, there are currently two proven paths that can be taken to work with containers for free: Podman or Colima
+
+## macOS
+
+### Colima
+```sh
+#!/bin/bash
+
+# Install colima runtime
+brew install colima
+# Install docker/docker compose utilities
+brew install docker docker-compose docker-credential-helper
+
+# Setup `docker compose`
+mkdir -p ~/.docker/cli-plugins
+ln -sfn $(brew --prefix)/opt/docker-compose/bin/docker-compose ~/.docker/cli-plugins/docker-compose
+
+colima start --cpu 4 --memory 8
+
+# Autostart colima at boot
+brew services start colima
+```
 
 # Cloud CLI
 
