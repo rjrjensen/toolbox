@@ -113,3 +113,23 @@ To create Terraform configurations using multiple languages, an easier way is to
 ```pwsh
 npm install --global cdktf-cli@latest
 ```
+
+# Remote Development
+
+### macOS
+
+Install wakeonlan
+```sh
+brew install wakeonlan
+```
+
+#### Wake a computer
+If you know the MAC address of your computer, you're weird and should take your talent to a casino or something.
+```sh
+wakeonlan AA:BB:CC:DD:EE:FF
+```
+
+If you're normal and might have a static IP for the device and you set it to something easy to remember, then use this command:
+```sh
+arp -a | grep "192.168.0.100" | awk '{print $4}' | xargs wakeonlan
+```
